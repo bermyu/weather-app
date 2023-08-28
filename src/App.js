@@ -20,6 +20,13 @@ function App() {
     setWeather(data);
   }
 
+  function handleDeleteActivity(id) {
+    const filteredActivites = activities.filter(
+      (_activity) => _activity.id !== id
+    );
+    setActivities(filteredActivites);
+  }
+
   useEffect(() => {
     getWeather();
   }, []);
@@ -41,6 +48,7 @@ function App() {
       <List
         activities={weather.isGoodWeather ? forGoodWeather : forBadWeather}
         isGoodWeather={weather.isGoodWeather}
+        onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
     </div>
