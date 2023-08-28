@@ -29,6 +29,10 @@ function App() {
 
   useEffect(() => {
     getWeather();
+    const intervall = setInterval(getWeather, 5000);
+    return () => {
+      clearInterval(intervall);
+    };
   }, []);
 
   const forGoodWeather = activities.filter(
